@@ -180,6 +180,15 @@ public class Question extends AppCompatActivity {
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
+                else{
+                    Intent intent = new Intent(Question.this, Score.class);
+                    intent.putExtra("QuestionNo", questionNo + 1 );
+                    intent.putExtra("Score", score);
+                    intent.putExtra("QuestionType",questionType);
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
+                }
             }
         });
     }

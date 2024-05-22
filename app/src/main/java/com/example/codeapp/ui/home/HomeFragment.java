@@ -22,6 +22,9 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private Button revisionButton;
+    private Button lineCodeButton;
+    private Button missingCodeButton;
+    private Button randomButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,6 +44,37 @@ public class HomeFragment extends Fragment {
                 getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.fade_out);
             }
         });
+        lineCodeButton = root.findViewById(R.id.lineButton);
+        lineCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Question.class);
+                intent.putExtra("QuestionType",2);
+                startActivity(intent);
+                getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.fade_out);
+            }
+        });
+        missingCodeButton = root.findViewById(R.id.missingButton);
+        missingCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Question.class);
+                intent.putExtra("QuestionType",3);
+                startActivity(intent);
+                getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.fade_out);
+            }
+        });
+        randomButton = root.findViewById(R.id.randomButton);
+        randomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Question.class);
+                intent.putExtra("QuestionType",4);
+                startActivity(intent);
+                getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.fade_out);
+            }
+        });
+
 
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
