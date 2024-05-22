@@ -1,6 +1,7 @@
 package com.example.codeapp;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -28,7 +30,6 @@ public class Question extends AppCompatActivity {
     private Button nextButton;
     private QuestionCreator question;
     private int questionType;
-    private TextView scoreText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +58,7 @@ public class Question extends AppCompatActivity {
 
         TextView questionText = findViewById(R.id.questionText);
         questionText.setText("Question :" + questionNo);
-        scoreText = findViewById(R.id.scoreText);
+        TextView  scoreText = findViewById(R.id.scoreText);
         scoreText.setText("Score :" + score);
         TextView questionType = findViewById(R.id.questionType);
         questionType.setText(question.getQuestionHead());
@@ -79,64 +80,105 @@ public class Question extends AppCompatActivity {
         nextButton = findViewById(R.id.nextButton);
         nextButton.setVisibility(View.INVISIBLE);
 
-        firstButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!answered) {
-                    fadeInButton();
-                    if (question.getCorrectAnswer() == 1) {
-                        score++;
-                    }
+        firstButton.setOnClickListener(v -> {
+            if(!answered) {
+                fadeInButton();
+                if (question.getCorrectAnswer() == 1) {
+                    firstButton.setBackground(getDrawable(R.drawable.correct_gradient_list));
+                    score++;
+                    AnimationDrawable animationDrawable = (AnimationDrawable)
+                            firstButton.getBackground();
+                    animationDrawable.setEnterFadeDuration(0);
+                    animationDrawable.setExitFadeDuration(100);
+                    animationDrawable.start();
+                }
+                else{
+                    firstButton.setBackground(getDrawable(R.drawable.incorrect_gradient_list));
+                    AnimationDrawable animationDrawable = (AnimationDrawable)
+                            firstButton.getBackground();
+                    animationDrawable.setEnterFadeDuration(0);
+                    animationDrawable.setExitFadeDuration(100);
+                    animationDrawable.start();
                 }
             }
         });
-        secondButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!answered) {
-                    fadeInButton();
-                    if (question.getCorrectAnswer() == 2) {
-                        score++;
-                    }
+        secondButton.setOnClickListener(v -> {
+            if(!answered) {
+                fadeInButton();
+                if (question.getCorrectAnswer() == 2) {
+                    secondButton.setBackground(getDrawable(R.drawable.correct_gradient_list));
+                    score++;
+                    AnimationDrawable animationDrawable = (AnimationDrawable)
+                            secondButton.getBackground();
+                    animationDrawable.setEnterFadeDuration(0);
+                    animationDrawable.setExitFadeDuration(100);
+                    animationDrawable.start();
+                }
+                else{
+                    secondButton.setBackground(getDrawable(R.drawable.incorrect_gradient_list));
+                    AnimationDrawable animationDrawable = (AnimationDrawable)
+                            secondButton.getBackground();
+                    animationDrawable.setEnterFadeDuration(0);
+                    animationDrawable.setExitFadeDuration(100);
+                    animationDrawable.start();
                 }
             }
         });
-        thirdButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!answered) {
-                    fadeInButton();
-                    if (question.getCorrectAnswer() == 3) {
-                        score++;
-                    }
+        thirdButton.setOnClickListener(v -> {
+            if(!answered) {
+                fadeInButton();
+                if (question.getCorrectAnswer() == 3) {
+                    thirdButton.setBackground(getDrawable(R.drawable.correct_gradient_list));
+                    score++;
+                    AnimationDrawable animationDrawable = (AnimationDrawable)
+                            thirdButton.getBackground();
+                    animationDrawable.setEnterFadeDuration(0);
+                    animationDrawable.setExitFadeDuration(100);
+                    animationDrawable.start();
+                }
+                else{
+                    thirdButton.setBackground(getDrawable(R.drawable.incorrect_gradient_list));
+                    AnimationDrawable animationDrawable = (AnimationDrawable)
+                            thirdButton.getBackground();
+                    animationDrawable.setEnterFadeDuration(0);
+                    animationDrawable.setExitFadeDuration(100);
+                    animationDrawable.start();
                 }
             }
         });
-        fourthButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!answered) {
-                    fadeInButton();
-                    if (question.getCorrectAnswer() == 4) {
-                        score++;
-                    }
+        fourthButton.setOnClickListener(v -> {
+            if(!answered) {
+                fadeInButton();
+                if (question.getCorrectAnswer() == 4) {
+                    fourthButton.setBackground(getDrawable(R.drawable.correct_gradient_list));
+                    score++;
+                    AnimationDrawable animationDrawable = (AnimationDrawable)
+                            fourthButton.getBackground();
+                    animationDrawable.setEnterFadeDuration(0);
+                    animationDrawable.setExitFadeDuration(100);
+                    animationDrawable.start();
+                }
+                else{
+                    fourthButton.setBackground(getDrawable(R.drawable.incorrect_gradient_list));
+                    AnimationDrawable animationDrawable = (AnimationDrawable)
+                            fourthButton.getBackground();
+                    animationDrawable.setEnterFadeDuration(0);
+                    animationDrawable.setExitFadeDuration(100);
+                    animationDrawable.start();
                 }
             }
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(answered){
-                    if(questionNo < 10){
-
-                        Intent intent = new Intent(Question.this, Question.class);
-                        intent.putExtra("QuestionNo", questionNo + 1 );
-                        intent.putExtra("Score", score);
-                        intent.putExtra("QuestionType",questionType);
-                        startActivity(intent);
-                        finish();
-                    }
+        nextButton.setOnClickListener(v -> {
+            if(answered){
+                if(questionNo < 10){
+                    Intent intent = new Intent(Question.this, Question.class);
+                    intent.putExtra("QuestionNo", questionNo + 1 );
+                    intent.putExtra("Score", score);
+                    intent.putExtra("QuestionType",questionType);
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
                 }
             }
         });
