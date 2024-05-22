@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Question.class);
+                intent.putExtra("QuestionType",1);
                 startActivity(intent);
                 getActivity().overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.fade_out);
             }

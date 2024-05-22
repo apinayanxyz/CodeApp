@@ -14,6 +14,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class Question extends AppCompatActivity {
 
     private Button firstButton;
@@ -21,9 +23,12 @@ public class Question extends AppCompatActivity {
     private Button thirdButton;
     private Button fourthButton;
     private boolean answered = false;
-    private int question;
+    private int questionNo;
     private int score;
     private Button nextButton;
+    private QuestionCreator question;
+    private int questionType;
+    private TextView scoreText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,19 +39,35 @@ public class Question extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        questionType = getIntent().getIntExtra("QuestionType",0);
+        int rand = questionType;
+        if (questionType == 0){
+            Random randGen = new Random();
+            rand = randGen.nextInt(3);
+        }
+        question = new QuestionCreator( rand );
         createButton();
         createText();
     }
 
     private void createText() {
-        question = getIntent().getIntExtra("QuestionNo",1);
+
+        questionNo = getIntent().getIntExtra("QuestionNo",1);
         score = getIntent().getIntExtra("Score",0);
 
         TextView questionText = findViewById(R.id.questionText);
-        questionText.setText("Question :" + question);
-        TextView scoreText = findViewById(R.id.scoreText);
+        questionText.setText("Question :" + questionNo);
+        scoreText = findViewById(R.id.scoreText);
         scoreText.setText("Score :" + score);
+        TextView questionType = findViewById(R.id.questionType);
+        questionType.setText(question.getQuestionHead());
+        TextView questionExample = findViewById(R.id.example);
+        questionExample.setText(question.getQuestionBody());
+
+        firstButton.setText(question.getAnswer1());
+        secondButton.setText(question.getAnswer2());
+        thirdButton.setText(question.getAnswer3());
+        fourthButton.setText(question.getAnswer4());
     }
 
     private void createButton() {
@@ -63,6 +84,9 @@ public class Question extends AppCompatActivity {
             public void onClick(View v) {
                 if(!answered) {
                     fadeInButton();
+                    if (question.getCorrectAnswer() == 1) {
+                        score++;
+                    }
                 }
             }
         });
@@ -71,6 +95,9 @@ public class Question extends AppCompatActivity {
             public void onClick(View v) {
                 if(!answered) {
                     fadeInButton();
+                    if (question.getCorrectAnswer() == 2) {
+                        score++;
+                    }
                 }
             }
         });
@@ -79,6 +106,9 @@ public class Question extends AppCompatActivity {
             public void onClick(View v) {
                 if(!answered) {
                     fadeInButton();
+                    if (question.getCorrectAnswer() == 3) {
+                        score++;
+                    }
                 }
             }
         });
@@ -87,6 +117,9 @@ public class Question extends AppCompatActivity {
             public void onClick(View v) {
                 if(!answered) {
                     fadeInButton();
+                    if (question.getCorrectAnswer() == 4) {
+                        score++;
+                    }
                 }
             }
         });
@@ -95,10 +128,12 @@ public class Question extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answered){
-                    if(question < 10){
+                    if(questionNo < 10){
+
                         Intent intent = new Intent(Question.this, Question.class);
-                        intent.putExtra("QuestionNo", question+1);
+                        intent.putExtra("QuestionNo", questionNo + 1 );
                         intent.putExtra("Score", score);
+                        intent.putExtra("QuestionType",questionType);
                         startActivity(intent);
                         finish();
                     }
