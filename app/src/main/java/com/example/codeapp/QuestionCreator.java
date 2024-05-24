@@ -53,7 +53,7 @@ public class QuestionCreator {
     private void generateQuestion(int questionType) {
         Random rand = new Random();
         int randNum = rand.nextInt(15);
-        if (questionType == 1 ){
+        if (questionType == 1){
             revisionQuestionCreation(randNum);
         }
         else if (questionType == 2){

@@ -41,12 +41,18 @@ public class Question extends AppCompatActivity {
             return insets;
         });
         questionType = getIntent().getIntExtra("QuestionType",0);
-        int rand = questionType;
-        if (questionType == 0){
-            Random randGen = new Random();
-            rand = randGen.nextInt(3);
+
+        if (questionType != 0){
+            question = new QuestionCreator( questionType );
         }
-        question = new QuestionCreator( rand );
+        else{
+
+            Random randGen = new Random();
+            int rand = randGen.nextInt(3) ;
+            System.out.println(rand);
+            question = new QuestionCreator(rand);
+        }
+
         createButton();
         createText();
     }
