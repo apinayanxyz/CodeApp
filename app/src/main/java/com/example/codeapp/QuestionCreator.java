@@ -60,7 +60,164 @@ public class QuestionCreator {
             lineCodeQuestionCreation(randNum);
         }
         else{
+            missingCodeQuestion(randNum);
+        }
+    }
 
+    private void missingCodeQuestion(int randNum) {
+        switch(randNum) {
+            case 1:
+                questionHead = "What is missing from this code";
+                questionBody = "System.out.println(\"Hello world)";
+                correctAnswer = 4;
+                answer1 = "The last bracket";
+                answer2 = "The first speech mark";
+                answer3 = "The first bracket";
+                answer4 = "The last speech mark";
+                break;
+            case 2:
+                questionHead = "What is missing from this code";
+                questionBody = "System.out.println(\"Hello world\"";
+                correctAnswer = 1;
+                answer1 = "The last bracket";
+                answer2 = "The first speech mark";
+                answer3 = "The first bracket";
+                answer4 = "The last speech mark";
+                break;
+            case 3:
+                questionHead = "What is missing from this code";
+                questionBody = "System..println(\"Hello world\")";
+                correctAnswer = 1;
+                answer1 = "The missing out";
+                answer2 = "The first speech mark";
+                answer3 = "The first bracket";
+                answer4 = "The last speech mark";
+                break;
+            case 4:
+                questionHead = "What is missing from this code";
+                questionBody = "System.out.println(Hello world\")";
+                correctAnswer = 2;
+                answer1 = "The last bracket";
+                answer2 = "The first speech mark";
+                answer3 = "The first bracket";
+                answer4 = "The last speech mark";
+                break;
+            case 5:
+                questionHead = "What is wrong with this line";
+                questionBody = "String a = \" a \" \n" +
+                        "String b = \" b \" \n" +
+                        "int c = b + a" ;
+                correctAnswer = 3;
+                answer1 = "You cannot add two ints and store it in a string";
+                answer2 = "The values of a and b are too literal";
+                answer3 = "You cannot add two strings and store it in an integer";
+                answer4 = "The value of a and b do not match";
+                break;
+            case 6:
+                questionHead = "What is wrong with this line";
+                questionBody = "String a = \" a \" \n" +
+                        "String b = \" b \" \n" +
+                        "String c = b - a" ;
+                correctAnswer = 2;
+                answer1 = "You cannot add two ints and store it in a string";
+                answer2 = "You cannot use the minus operand on Strings";
+                answer3 = "You cannot add two strings and store it in an integer";
+                answer4 = "The value of a and b do not match";
+                break;
+            case 7:
+                questionHead = "Why is the value of x not a decimal";
+                questionBody = "double y = 10.1 \n" +
+                               "int z = 10 \n" +
+                        "int x = y/z";
+                correctAnswer = 4;
+                answer1 = "The value of z is not in double";
+                answer2 = "The value of y is not in integer";
+                answer3 = "The answer is correct";
+                answer4 = "The value of x is not in double";
+                break;
+            case 8:
+                questionHead = "Why could the value of x be seen as wrong";
+                questionBody = "double y = 10.1 \n" +
+                        "int z = 10 \n" +
+                        "String x = y + z";
+                correctAnswer = 3;
+                answer1 = "The value of z is not in double";
+                answer2 = "The value of y is not in integer";
+                answer3 = "The value of x is being stored a string";
+                answer4 = "The value of x is not in double";
+                break;
+            case 9:
+                questionHead = "What is missing from this code";
+                questionBody = "for(i=0;i<10;i++){ " +
+                        "\n";
+                correctAnswer = 2;
+                answer1 = "The semicolons should be swapped with colons";
+                answer2 = "The close bracket is missing";
+                answer3 = "The wrong loop is being used";
+                answer4 = "Its is being looped infinitely";
+                break;
+            case 10:
+                questionHead = "What is missing from this code";
+                questionBody = "for(i=0:i<10:i++){ " +
+                        "\n}";
+                correctAnswer = 1;
+                answer1 = "The colons should be swapped with semicolons";
+                answer2 = "The close bracket is missing";
+                answer3 = "The wrong loop is being used";
+                answer4 = "Its is being looped infinitely";
+                break;
+            case 11:
+                questionHead = "What is wrong with this code";
+                questionBody = "for(i=0;i<10;i--){ " +
+                        "\n}";
+                correctAnswer = 4;
+                answer1 = "The colons should be swapped with semicolons";
+                answer2 = "The close bracket is missing";
+                answer3 = "The wrong loop is being used";
+                answer4 = "Its is being looped infinitely";
+                break;
+            case 12:
+                questionHead = "What is wrong with this code";
+                questionBody = "do{ " +
+                        "\n}while(true)";
+                correctAnswer = 4;
+                answer1 = "The colons should be swapped with semicolons";
+                answer2 = "The close bracket is missing";
+                answer3 = "The wrong loop is being used";
+                answer4 = "Its is being looped infinitely";
+                break;
+            case 13:
+                questionHead = "What is wrong with this code";
+                questionBody = "System.out.println(x) " +
+                        "\nString x = \" Hello\"";
+                correctAnswer = 3;
+                answer1 = "The variable x is in the wrong data type";
+                answer2 = "x is not capital";
+                answer3 = "x is declared after being used in the print";
+                answer4 = "String shouldn't be capital";
+                break;
+            case 14:
+                questionHead = "What is wrong with this code";
+                questionBody = "else { " +
+                        "\n}";
+                correctAnswer = 2;
+                answer1 = "There should be a condition next to the else";
+                answer2 = "There is no if statement at the start";
+                answer3 = "There is no else if at the start";
+                answer4 = "There is a missing if near the else";
+                break;
+            default:
+                questionHead = "What is wrong with this code";
+                questionBody = "if (x<0){" +
+                        "\n}" +
+                        "\nelse (x>0) { " +
+                        "\n}";
+                correctAnswer = 4;
+                answer1 = "There should be a condition next to the else";
+                answer2 = "There is no if statement at the start";
+                answer3 = "There is no else if at the start";
+                answer4 = "There is a missing if near the else";
+                break;
         }
     }
 
@@ -112,58 +269,61 @@ public class QuestionCreator {
                 answer4 = "Stores the function in a variable";
                 break;
             case 6:
-                questionHead = "";
-                questionBody = "";
+                questionHead = "What is this type of loop";
+                questionBody = "for(i=0;i<10li++){\n" +
+                        "\n}";
                 correctAnswer = 3;
-                answer1 = "";
-                answer2 = "";
-                answer3 = "";
-                answer4 = "";
+                answer1 = "While Loop";
+                answer2 = "If Loop";
+                answer3 = "For loop";
+                answer4 = "Class Loop";
                 break;
             case 7:
-                questionHead = "";
-                questionBody = "";
+                questionHead = "What is this type of loop";
+                questionBody = "do{\n" +
+                        "\n}while(x=true)";
                 correctAnswer = 4;
-                answer1 = "";
-                answer2 = "";
-                answer3 = "";
-                answer4 = "";
+                answer1 = "For Loop";
+                answer2 = "If statement";
+                answer3 = "Method";
+                answer4 = "While Loop";
                 break;
             case 8:
-                questionHead = "";
-                questionBody = "";
+                questionHead = "What is this type of statement";
+                questionBody = "if(true){\n \n}";
                 correctAnswer = 4;
-                answer1 = "";
-                answer2 = "";
-                answer3 = "";
-                answer4 = "";
+                answer1 = "While loop";
+                answer2 = "For Statement";
+                answer3 = "While Statement";
+                answer4 = "If statement";
                 break;
             case 9:
-                questionHead = "";
-                questionBody = "";
+                questionHead = "What does this line of code do";
+                questionBody = "String x = \"Hello World\" " +
+                        "\n System.out.println()";
                 correctAnswer = 2;
-                answer1 = "";
-                answer2 = "";
-                answer3 = "";
-                answer4 = "";
+                answer1 = "Print hello world in the console";
+                answer2 = "Print Hello World in the console";
+                answer3 = "Save Hello world onto a variable";
+                answer4 = "Print Hello World in the app";
                 break;
             case 10:
-                questionHead = "";
-                questionBody = " ";
+                questionHead = "What does this line of code do";
+                questionBody = "String array[] = new String[9]";
                 correctAnswer = 1;
-                answer1 = "";
-                answer2 = "";
-                answer3 = "";
-                answer4 = "";
+                answer1 = "Make a an array of strings that has contains 9 values";
+                answer2 = "Finds an array of strings that contains 9 values";
+                answer3 = "Make a an array of integers that has contains 9 values";
+                answer4 = "Make a an array of strings that has contains 19 values";
                 break;
             case 11:
-                questionHead = "";
-                questionBody = "";
-                correctAnswer = 4;
-                answer1 = "";
-                answer2 = "";
-                answer3 = "";
-                answer4 = "";
+                questionHead = "What does this line of code do";
+                questionBody = "int array[] = new int[9]";
+                correctAnswer = 1;
+                answer1 = "Make a an array of integers that has contains 9 values";
+                answer2 = "Finds an array of Booleans that contains 9 values";
+                answer3 = "Make a an array of strings that has contains 9 values";
+                answer4 = "Make a an array of strings that has contains 19 values";
                 break;
             case 12:
                 questionHead = "What coding language does this belong to";
